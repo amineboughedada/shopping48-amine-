@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shop 48 Wilaya</title>
+    <link rel="stylesheet" type="text/css" href="t-shirt01.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../Logos/LOGO.jpg" alt="Shop 48 Wilaya Logo" class="logo-image">
+            <span class="logo-text">Online Shopping</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../Home page/home.html">Home</a></li>
+                <li><a href="../T-shirts page/t-shirts.html">T-shirts</a></li>
+                <li><a href="../Hoodies page/hoodie.html">Hoodies</a></li>
+                <li><a href="../contact form/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    <div class="page-title">
+        <h1>Hoodie Akatsuki</h1>
+    </div>
+    <div class="product-container">
+        <img class="product-image" id="big-image" src="../Hoodies/shop48wilaya-28-05-2023-0432.jpg" alt="Big Image">
+        <div class="small-images">
+          <img class="small-image" src="../Hoodies/shop48wilaya-28-05-2023-0434.jpg" alt="Small Image 1">
+          <img class="small-image" src="../Hoodies/shop48wilaya-28-05-2023-0433.jpg" alt="Small Image 1">
+        </div>
+        <div class="quantity-container">
+            <div class="quantity-control" id="minus-button">-</div>
+            <input type="text" class="quantity quantity-input" id="quantity" value="1" readonly>
+            <div class="quantity-control" id="plus-button">+</div>
+          </div>
+          <button class="buy-button"><a href="../payment page/payment.html" >Buy Now</a></button>
+        </div>
+      <script>
+        // JavaScript code
+        const bigImage = document.getElementById('big-image');
+        const smallImages = document.getElementsByClassName('small-image');
+        const minusButton = document.getElementById('minus-button');
+        const plusButton = document.getElementById('plus-button');
+        const quantityInput = document.getElementById('quantity');
+        const buyButton = document.getElementsByClassName('buy-button')[0];
+    
+        // Add click event listeners to small images
+        for (let i = 0; i < smallImages.length; i++) {
+          smallImages[i].addEventListener('click', function() {
+            // Update the big image source
+            bigImage.src = this.src;
+    
+            // Remove 'selected' class from all small images
+            for (let j = 0; j < smallImages.length; j++) {
+              smallImages[j].classList.remove('selected');
+            }
+    
+            // Add 'selected' class to the clicked small image
+            this.classList.add('selected');
+          });
+        }
+    
+        // Click event listener for minus button
+        minusButton.addEventListener('click', function() {
+          let quantity = parseInt(quantityInput.value);
+          if (quantity > 1) {
+            quantity--;
+            quantityInput.value = quantity;
+          }
+        });
+    
+        // Click event listener for plus button
+        plusButton.addEventListener('click', function() {
+          let quantity = parseInt(quantityInput.value);
+          quantity++;
+          quantityInput.value = quantity;
+        });
+    
+        // Click event listener for buy button
+        buyButton.addEventListener('click', function() {
+          let quantity = parseInt(quantityInput.value);
+          let selectedImage = document.querySelector('.small-image.selected');
+          if (selectedImage) {
+            let selectedAlt = selectedImage.getAttribute('alt');
+            alert(`You have selected ${quantity} of ${selectedAlt}.`);
+          } else {
+            alert('Please select an image.');
+          }
+        });
+      </script>
+
+<footer>
+    <div class="social-media">
+        <a href="https://www.tiktok.com/@shop48wilaya?is_from_webapp=1&sender_device=pc"><img src="../Logos/tik-tok.png" alt="Tiktok Logo"></a>
+        <a href="https://www.instagram.com/shop48wilaya/"><img src="../Logos/instagram.png" alt="Instagram Logo"></a>
+    </div>
+    <p>&copy; 2023 Shop 48 Wilaya. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
